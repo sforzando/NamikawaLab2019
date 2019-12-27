@@ -14,8 +14,8 @@ which identify > /dev/null
 mkdir -p $TARGET_DIR
 
 # Download
-#pip3 install instaLooter
-#python3 -m instalooter hashtag $HASHTAG $TARGET_DIR --template {id}_{width}x{height} --num-to-dl $NUM2DL
+pip3 install instaLooter
+python3 -m instalooter hashtag $HASHTAG $TARGET_DIR --template {id}_{width}x{height} --num-to-dl $NUM2DL
 
 # Check Resolution
 find $TARGET_DIR -type f -not -name "*_1080x1080.jpg" | xargs rm -f
@@ -33,6 +33,9 @@ done
 DIGIT=100001
 for jpg in $(find $TARGET_DIR -type f -name "*.jpg"); do
   basename=$(basename $jpg)
-  echo $TARGET_DIR/${DIGIT:1}_$basename
+  mv $jpg $TARGET_DIR/${DIGIT:1}_$basename
   DIGIT=$((++DIGIT))
 done
+
+# Show Result
+echo "Finally, ${DIGIT:1} JPGs remain."

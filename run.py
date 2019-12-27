@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from pathlib import Path
 
 app = Flask(__name__)
@@ -8,6 +8,9 @@ def get_images():
     dataset_path = Path('/home/shin/NamikawaLab2019/dataset/wabisabi')
     return [x.name for x in list(dataset_path.glob('**/*.jpg'))]
 
+@app.route('/dataset/<path:filename>')
+def get_data(filename):
+    return send_from_directory(app.root_path + 'dataset/wabisabi/', filename)
 
 @app.route('/')
 def index():
