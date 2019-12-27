@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def test():
-    return 'Hello NamikawaLab2019'
+    return render_template('index.html')
 
 
 @app.route('/first')
