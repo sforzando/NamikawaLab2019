@@ -6,27 +6,27 @@ app = Flask(__name__)
 
 def get_images():
     dataset_path = Path('/home/shin/NamikawaLab2019/dataset/wabisabi')
-    print(dataset_path)
+    return [x.name for x in list(dataset_path.glob('**/*.jpg'))]
 
 
 @app.route('/')
-def test():
-    return render_template('index.html')
+def index():
+    return render_template('index.html', images=get_images())
 
 
 @app.route('/first')
 def first():
-    return render_template('first.html')
+    return render_template('first.html', images=get_images())
 
 
 @app.route('/second')
 def second():
-    pass
+    return render_template('second.html', images=get_images())
 
 
 @app.route('/third')
 def third():
-    pass
+    return render_template('third.html', images=get_images())
 
 
 @app.route("/favicon.ico")
@@ -40,5 +40,5 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='0.0.0.0', port=5000)
-    get_images()
+    app.run(debug=True, host='0.0.0.0', port=5000)
+
