@@ -78,7 +78,7 @@ def move():
 
 
 @app.route('/moved')
-def index():
+def moved():
     return render_template('index.html', images=get_moved_images())
 
 
