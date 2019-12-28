@@ -5,9 +5,11 @@ Design Project III A at Kyoto University of Art and Design
 - [How to Develop](#how-to-develop)
   - [Install libraries](#install-libraries)
   - [Run](#run)
+  - [Mosaic](#mosaic)
 - [Add Daemon](#add-daemon)
   - [Flask](#flask)
   - [filebrowser](#filebrowser)
+- [License](#license)
 
 ## How to Develop
 
@@ -20,6 +22,12 @@ Design Project III A at Kyoto University of Art and Design
 `python3 run.py`
 
 You will be able to see `http://35.226.170.223:5000/` .
+
+### Mosaic
+
+`python3 mosaic.py <target image> <source images path> <output image path>`
+
+![mosaic](https://user-images.githubusercontent.com/32637762/71540972-43a56480-2995-11ea-8dd9-f220fe3965c3.jpg)
 
 ## Add Daemon
 
@@ -67,3 +75,11 @@ WantedBy=multi-user.target
 
 Start: `sudo systemctl start filebrowser`
 Stop: `sudo systemctl stop filebrowser`
+
+You will be able to see `http://35.226.170.223:8080/`.
+
+# Misc
+
+## License
+
+MIT License.
