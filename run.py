@@ -15,16 +15,14 @@ app = Flask(__name__)
 # Add RotatingFileHandler to Flask Logger
 handler = logging.handlers.RotatingFileHandler(
     "NamikawaLab2019.log", "a+", maxBytes=3000, backupCount=5)
-# handler.setLevel(logging.INFO)
+handler.setLevel(logging.INFO)
 handler.setFormatter(logging.Formatter(
     '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
 app.logger.addHandler(handler)
 
 
 def get_images():
-    # dataset_path = Path(__file__).parent / 'dataset/wabisabi'
-    dataset_path = Path(DATASET_PATH)
-    images = [x.name for x in list(dataset_path.glob('**/*.jpg'))]
+    images = [x.name for x in list(Path(DATASET_PATH).glob('**/*.jpg'))]
     random.shuffle(images)
     return images
 
@@ -33,6 +31,11 @@ def move_images(images):
     for image in images:
         app.logger.info('Moving: ' + image)
         shutil.move(DATASET_PATH + image, MOVED_PATH + image)
+
+
+def get_moved_images():
+    images = [x.name for x in list(Path(MOVED_PATH).glob('**/*.jpg'))]
+    return images
 
 
 @app.route('/dataset/<path:filename>')
@@ -72,6 +75,11 @@ def move():
     images = rgd.replace('images%5B%5D=', '').split('&')
     move_images(images)
     return jsonify(rgd)
+
+
+@app.route('/moved')
+def index():
+    return render_template('index.html', images=get_moved_images())
 
 
 @app.route("/favicon.ico")
