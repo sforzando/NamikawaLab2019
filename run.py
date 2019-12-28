@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, jsonify
 from pathlib import Path
 import random
 
@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 def get_images():
-    dataset_path = Path('/home/shin/NamikawaLab2019/dataset/wabisabi')
+    dataset_path = Path(__file__).parent / 'dataset/wabisabi'
     images = [x.name for x in list(dataset_path.glob('**/*.jpg'))]
     random.shuffle(images)
     return images
@@ -39,7 +39,9 @@ def third():
 
 @app.route('/delete', methods=['POST'])
 def delete_images():
-    return request.get_data()
+    rgd = request.get_data(as_text=True)
+    print('request.get_data(): ' + rgd)
+    return jsonify(rgd)
 
 
 @app.route("/favicon.ico")
