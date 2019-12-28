@@ -10,7 +10,7 @@ def get_images():
 
 @app.route('/dataset/<path:filename>')
 def get_data(filename):
-    return send_from_directory(app.root_path + 'dataset/wabisabi/', filename)
+    return send_from_directory(app.root_path + '/dataset/', filename)
 
 @app.route('/')
 def index():

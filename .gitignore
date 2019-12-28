@@ -303,4 +303,5 @@ dmypy.json
 # Dataset
 *.jpg
 *.png
+*.zip
 

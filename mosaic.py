@@ -228,7 +228,7 @@ def mosaic(img_path, tiles_path):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print('Usage: {} <image> <tiles directory> [<output file>]\r'.format(sys.argv[0]))
+        print('Usage: {} <target image> <tiles directory> [<output file>]\r'.format(sys.argv[0]))
     else:
         OUT_FILE = sys.argv[3] if sys.argv[3] else OUT_FILE
         mosaic(sys.argv[1], sys.argv[2])
