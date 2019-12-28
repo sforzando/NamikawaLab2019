@@ -1,10 +1,14 @@
 {
     "cSpell.words": [
         "antialiased",
+        "asctime",
         "crossorigin",
+        "datefmt",
         "filebrowser",
         "jsonify",
+        "levelname",
         "namikawa",
+        "qualname",
         "systemctl",
         "systemd",
         "wabisabi"

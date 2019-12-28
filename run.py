@@ -1,14 +1,24 @@
 from flask import Flask, request, render_template, send_from_directory, jsonify
 from pathlib import Path
 
+import logging
+import logging.handlers
 import random
 import shutil
-
-app = Flask(__name__)
 
 DATASET_PATH = '/mnt/dataset/wabisabi/'
 MOVED_PATH = '/mnt/dataset/moved/'
 MOSAIC_PATH = '/mnt/dataset/mosaic/'
+
+app = Flask(__name__)
+
+# Add RotatingFileHandler to Flask Logger
+handler = logging.handlers.RotatingFileHandler(
+    "NamikawaLab2019.log", "a+", maxBytes=3000, backupCount=5)
+# handler.setLevel(logging.INFO)
+handler.setFormatter(logging.Formatter(
+    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
+app.logger.addHandler(handler)
 
 
 def get_images():
@@ -21,7 +31,7 @@ def get_images():
 
 def move_images(images):
     for image in images:
-        print('Moving: ' + image)
+        app.logger.info('Moving: ' + image)
         shutil.move(DATASET_PATH + image, MOVED_PATH + image)
 
 
@@ -58,7 +68,7 @@ def third():
 @app.route('/move', methods=['POST'])
 def move():
     rgd = request.get_data(as_text=True)
-    print('request.get_data(): ' + rgd)
+    app.logger.info('request.get_data(): ' + rgd)
     images = rgd.replace('images%5B%5D=', '').split('&')
     move_images(images)
     return jsonify(rgd)
