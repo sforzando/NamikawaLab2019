@@ -12,11 +12,13 @@
 </head>
 
 <body class="">
-  <div class="flex flex-wrap content-center justify-center max-w-full max-h-full bg-gray-400">
-    {% for image in images[:11 ** 2] | random %}
-      <img class="cursor-pointer shadow-md rounded object-cover object-center w-1/12 m-1" src="/dataset/wabisabi/{{ image }}" loading="lazy">
+  <form class="flex flex-wrap content-center justify-center max-w-full max-h-full bg-gray-400">
+    {% for image in images[:11 ** 2] %}
+      <img class="cursor-pointer shadow-md hover:shadow-xl rounded object-cover object-center w-1/12 m-1"
+           src="/dataset/wabisabi/{{ image }}"
+           loading="lazy">
     {% endfor %}
-  </div>
+  </form>
   <!-- scripts -->
   <script src="/static/js/common.js"></script>
   <script src="/static/js/index.js"></script>
