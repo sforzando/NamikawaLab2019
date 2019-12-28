@@ -1,7 +1,7 @@
 console.log('index')
 
 $(function () {
-  $(img).click(function (event) {
+  $('img').click(function (event) {
     console.log(event)
   })
 })
