@@ -17,8 +17,9 @@
     <p class="text-xl">ご協力ありがとうございました。</p>
   </div>
   <form class="flex flex-wrap content-center justify-center max-w-full max-h-full bg-gray-300">
+    <img alt="00165" class="cursor-pointer shadow-md hover:shadow-xl rounded object-scale-down object-center w-1/12 m-1" src="/mosaic/00165.jpg" loading="lazy">
     {% for image in images[:11 ** 2] %}
-    <img alt="{{ image }}" class="cursor-pointer shadow-md hover:shadow-xl rounded object-scale-down object-center w-1/12 m-1" src="/dataset/wabisabi/{{ image }}" loading="lazy">
+    <img alt="{{ image }}" class="cursor-pointer shadow-md hover:shadow-xl rounded object-scale-down object-center w-1/12 m-1" src="/dataset/{{ image }}" loading="lazy">
     {% endfor %}
     <button id="submit"
       class="bg-gray-500 hover:bg-gray-700 text-white text-2xl font-bold py-2 px-4 border border-gray-700 rounded inline-flex items-center z-40 fixed top-0 right-0 m-4" style="opacity: 0.85;">

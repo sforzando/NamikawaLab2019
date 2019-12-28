@@ -34,7 +34,7 @@ $(function() {
     $('#submit').addClass('bg-gray-500 border-gray-700 hover:bg-gray-700')
     $('#submit').removeClass('bg-red-500 border-red-700 hover:bg-red-700')
     $.ajax({
-      url: '/delete',
+      url: '/move',
       type: 'POST',
       data: {
         'images': images
@@ -44,7 +44,7 @@ $(function() {
         console.log('Success!')
         console.log(data)
         $('#info').fadeIn('slow', function() {
-          setTimeout(location.reload(), 10000)
+          setTimeout(location.reload(), 15000)
         })
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {

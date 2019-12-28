@@ -3,6 +3,7 @@
         "antialiased",
         "crossorigin",
         "filebrowser",
+        "jsonify",
         "namikawa",
         "systemctl",
         "systemd",
