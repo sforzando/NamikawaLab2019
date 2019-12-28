@@ -13,7 +13,7 @@
 
 <body class="">
   <div class="flex flex-wrap content-center justify-center max-w-full max-h-full bg-gray-400">
-    {% for image in images[:121] %}
+    {% for image in images[:11 ** 2] | random %}
       <img class="cursor-pointer shadow-md rounded object-cover object-center w-1/12 m-1" src="/dataset/wabisabi/{{ image }}" loading="lazy">
     {% endfor %}
   </div>

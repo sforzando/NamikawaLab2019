@@ -1,16 +1,21 @@
 from flask import Flask, render_template, send_from_directory
 from pathlib import Path
+import random
 
 app = Flask(__name__)
 
 
 def get_images():
     dataset_path = Path('/home/shin/NamikawaLab2019/dataset/wabisabi')
-    return [x.name for x in list(dataset_path.glob('**/*.jpg'))]
+    images = [x.name for x in list(dataset_path.glob('**/*.jpg'))]
+    random.shuffle(images)
+    return images
+
 
 @app.route('/dataset/<path:filename>')
 def get_data(filename):
     return send_from_directory(app.root_path + '/dataset/', filename)
+
 
 @app.route('/')
 def index():
@@ -32,6 +37,11 @@ def third():
     return render_template('third.html', images=get_images())
 
 
+@app.route('/delete')
+def delete_images():
+    pass
+
+
 @app.route("/favicon.ico")
 def favicon():
     return app.send_static_file('favicon.ico')
@@ -44,4 +54,3 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
