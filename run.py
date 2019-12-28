@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory
 from pathlib import Path
 import random
 
@@ -37,9 +37,9 @@ def third():
     return render_template('third.html', images=get_images())
 
 
-@app.route('/delete')
+@app.route('/delete', methods=['POST'])
 def delete_images():
-    pass
+    return request.get_data()
 
 
 @app.route("/favicon.ico")

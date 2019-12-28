@@ -21,7 +21,7 @@ Design Project III A at Kyoto University of Art and Design
 
 `python3 run.py`
 
-You will be able to see `http://35.226.170.223:5000/` .
+You will be able to see `http://35.192.103.89:5000/` .
 
 ### Mosaic
 
@@ -76,7 +76,7 @@ WantedBy=multi-user.target
 Start: `sudo systemctl start filebrowser`
 Stop: `sudo systemctl stop filebrowser`
 
-You will be able to see `http://35.226.170.223:8080/`.
+You will be able to see `http://35.192.103.89:8080/`.
 
 # Misc
 
