@@ -13,11 +13,9 @@ MOSAIC_PATH = '/mnt/dataset/mosaic/'
 app = Flask(__name__)
 
 # Add RotatingFileHandler to Flask Logger
-handler = logging.handlers.RotatingFileHandler(
-    "NamikawaLab2019.log", "a+", maxBytes=3000, backupCount=5)
-handler.setLevel(logging.INFO)
-handler.setFormatter(logging.Formatter(
-    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
+handler = logging.handlers.RotatingFileHandler('NamikawaLab2019.log', maxBytes=10000, backupCount=5)
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
 app.logger.addHandler(handler)
 
 
@@ -50,7 +48,7 @@ def get_mosaic(filename):
 
 @app.route('/')
 def index():
-    return render_template('index.html', images=get_images())
+    return render_template('index.html', images=get_images(), title='index')
 
 
 @app.route('/first')
@@ -79,7 +77,7 @@ def move():
 
 @app.route('/moved')
 def moved():
-    return render_template('index.html', images=get_moved_images())
+    return render_template('index.html', images=get_moved_images(), title='moved')
 
 
 @app.route("/favicon.ico")
