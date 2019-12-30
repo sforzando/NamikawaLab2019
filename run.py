@@ -13,7 +13,8 @@ MOSAIC_PATH = '/mnt/dataset/mosaic/'
 app = Flask(__name__)
 
 # Add RotatingFileHandler to Flask Logger
-handler = logging.handlers.RotatingFileHandler('NamikawaLab2019.log', maxBytes=10000, backupCount=5)
+handler = logging.handlers.FileHandler('NamikawaLab2019.log')
+# handler = logging.handlers.RotatingFileHandler('NamikawaLab2019.log', maxBytes=10000, backupCount=5)
 handler.setLevel(logging.DEBUG)
 handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
 app.logger.addHandler(handler)

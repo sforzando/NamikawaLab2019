@@ -10,6 +10,7 @@ Design Project III A at Kyoto University of Art and Design
   - [Flask](#flask)
   - [filebrowser](#filebrowser)
 - [License](#license)
+- [Thanks](#thanks)
 
 ## How to Develop
 
@@ -83,3 +84,7 @@ You will be able to see `http://35.192.103.89:8080/`.
 ## License
 
 MIT License.
+
+## Thanks
+
+- Icon: [Icongr.am/clarity](https://icongr.am/clarity)
