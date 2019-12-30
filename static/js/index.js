@@ -28,7 +28,6 @@ $(function() {
     let images = []
     $('.selected').each(function() {
       images.push($(this).attr('alt'))
-      $(this).removeClass('selected border-solid border-4 border-red-600')
     })
     $('#submit').prop('disabled', true)
     $('#submit').addClass('bg-gray-500 border-gray-700 hover:bg-gray-700')

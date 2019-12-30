@@ -1,13 +1,14 @@
-import sys
 import os
-from PIL import Image
+import sys
 from multiprocessing import Process, Queue, cpu_count
 
+from PIL import Image
+
 # Change these 3 config parameters to suit your needs...
-TILE_SIZE = 50		# height/width of mosaic tiles in pixels
+TILE_SIZE = 50  # height/width of mosaic tiles in pixels
 # tile matching resolution (higher values give better fit but require more processing)
 TILE_MATCH_RES = 5
-ENLARGEMENT = 4		# the mosaic image will be this many times wider and taller than the original
+ENLARGEMENT = 4  # the mosaic image will be this many times wider and taller than the original
 
 TILE_BLOCK_SIZE = TILE_SIZE / max(min(TILE_MATCH_RES, TILE_SIZE), 1)
 WORKER_COUNT = max(cpu_count() - 1, 1)
@@ -31,7 +32,8 @@ class TileProcessor:
             img = img.crop((w_crop, h_crop, w - w_crop, h - h_crop))
 
             large_tile_img = img.resize((TILE_SIZE, TILE_SIZE), Image.ANTIALIAS)
-            small_tile_img = img.resize((int(TILE_SIZE / TILE_BLOCK_SIZE), int(TILE_SIZE / TILE_BLOCK_SIZE)), Image.ANTIALIAS)
+            small_tile_img = img.resize((int(TILE_SIZE / TILE_BLOCK_SIZE), int(TILE_SIZE / TILE_BLOCK_SIZE)),
+                                        Image.ANTIALIAS)
 
             return (large_tile_img.convert('RGB'), small_tile_img.convert('RGB'))
         except:
@@ -91,8 +93,8 @@ class TileFitter:
     def __get_tile_diff(self, t1, t2, bail_out_value):
         diff = 0
         for i in range(len(t1)):
-            #diff += (abs(t1[i][0] - t2[i][0]) + abs(t1[i][1] - t2[i][1]) + abs(t1[i][2] - t2[i][2]))
-            diff += ((t1[i][0] - t2[i][0])**2 + (t1[i][1] - t2[i][1])**2 + (t1[i][2] - t2[i][2]) ** 2)
+            # diff += (abs(t1[i][0] - t2[i][0]) + abs(t1[i][1] - t2[i][1]) + abs(t1[i][2] - t2[i][2]))
+            diff += ((t1[i][0] - t2[i][0]) ** 2 + (t1[i][1] - t2[i][1]) ** 2 + (t1[i][2] - t2[i][2]) ** 2)
             if bail_out_value < diff:
                 # we know already that this isn't going to be the best fit, so no point continuing with this tile
                 return diff
@@ -206,8 +208,8 @@ def compose(original_img, tiles):
         for x in range(mosaic.x_tile_count):
             for y in range(mosaic.y_tile_count):
                 large_box = (x * TILE_SIZE, y * TILE_SIZE, (x + 1) * TILE_SIZE, (y + 1) * TILE_SIZE)
-                small_box = (x * TILE_SIZE/TILE_BLOCK_SIZE, y * TILE_SIZE/TILE_BLOCK_SIZE,
-                             (x + 1) * TILE_SIZE/TILE_BLOCK_SIZE, (y + 1) * TILE_SIZE/TILE_BLOCK_SIZE)
+                small_box = (x * TILE_SIZE / TILE_BLOCK_SIZE, y * TILE_SIZE / TILE_BLOCK_SIZE,
+                             (x + 1) * TILE_SIZE / TILE_BLOCK_SIZE, (y + 1) * TILE_SIZE / TILE_BLOCK_SIZE)
                 work_queue.put((list(original_img_small.crop(small_box).getdata()), large_box))
                 progress.update()
 

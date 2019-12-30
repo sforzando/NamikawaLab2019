@@ -1,10 +1,10 @@
 from flask import Flask, request, render_template, send_from_directory, jsonify
 from pathlib import Path
 
-import logging
 import logging.handlers
 import random
 import shutil
+import string
 
 DATASET_PATH = '/mnt/dataset/wabisabi/'
 MOVED_PATH = '/mnt/dataset/moved/'
@@ -19,6 +19,11 @@ handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s in %(module)
 app.logger.addHandler(handler)
 
 
+def get_random_string(n=8):
+    """ for Cache Control Hash """
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+
+
 def get_images():
     images = [x.name for x in list(Path(DATASET_PATH).glob('**/*.jpg'))]
     random.shuffle(images)
@@ -27,8 +32,22 @@ def get_images():
 
 def move_images(images):
     for image in images:
-        app.logger.info('Moving: ' + image)
-        shutil.move(DATASET_PATH + image, MOVED_PATH + image)
+        try:
+            shutil.move(DATASET_PATH + image, MOVED_PATH + image)
+        except Exception as e:
+            app.logger.error(e)
+        else:
+            app.logger.info('Moved: ' + image)
+
+
+def undo_images(images):
+    for image in images:
+        try:
+            shutil.move(MOVED_PATH + image, DATASET_PATH + image)
+        except Exception as e:
+            app.logger.error(e)
+        else:
+            app.logger.info('Undoed:' + image)
 
 
 def get_moved_images():
@@ -48,36 +67,45 @@ def get_mosaic(filename):
 
 @app.route('/')
 def index():
-    return render_template('index.html', images=get_images(), title='index')
+    return render_template('index.html', images=get_images(), cch=get_random_string(8))
 
 
 @app.route('/first')
 def first():
-    return render_template('first.html', images=get_images())
+    return render_template('first.html', images=get_images(), cch=get_random_string(8))
 
 
 @app.route('/second')
 def second():
-    return render_template('second.html', images=get_images())
+    return render_template('second.html', images=get_images(), cch=get_random_string(8))
 
 
 @app.route('/third')
 def third():
-    return render_template('third.html', images=get_images())
+    return render_template('third.html', images=get_images(), cch=get_random_string(8))
+
+
+@app.route('/moved')
+def moved():
+    return render_template('moved.html', images=get_moved_images(), cch=get_random_string(8))
 
 
 @app.route('/move', methods=['POST'])
 def move():
     rgd = request.get_data(as_text=True)
-    app.logger.info('request.get_data(): ' + rgd)
+    app.logger.info('/move: ' + rgd)
     images = rgd.replace('images%5B%5D=', '').split('&')
     move_images(images)
     return jsonify(rgd)
 
 
-@app.route('/moved')
-def moved():
-    return render_template('index.html', images=get_moved_images(), title='moved')
+@app.route('/undo', methods=['POST'])
+def undo():
+    rgd = request.get_data(as_text=True)
+    app.logger.info('/undo: ' + rgd)
+    images = rgd.replace('images%5B%5D=', '').split('&')
+    undo_images(images)
+    return jsonify(rgd)
 
 
 @app.route("/favicon.ico")
