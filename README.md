@@ -2,8 +2,9 @@
 
 Design Project III A at Kyoto University of Art and Design
 
-![screenshot](https://user-images.githubusercontent.com/32637762/71595237-2a134100-2b7e-11ea-975f-b0c9263f446f.png>)
+![screenshot](https://user-images.githubusercontent.com/32637762/71595237-2a134100-2b7e-11ea-975f-b0c9263f446f.png)
 
+- [How to Prepare Dataset](#how-to-prepare-dataset)
 - [How to Develop](#how-to-develop)
   - [Install libraries](#install-libraries)
   - [Run](#run)
@@ -13,6 +14,10 @@ Design Project III A at Kyoto University of Art and Design
   - [filebrowser](#filebrowser)
 - [License](#license)
 - [Thanks](#thanks)
+
+## How to Prepare Dataset
+
+See `./downloadFromInstagramByHashtag.sh`.
 
 ## How to Develop
 
