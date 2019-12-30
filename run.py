@@ -117,12 +117,4 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    # Add RotatingFileHandler to Flask Logger
-    import logging.handlers
-
-    handler = logging.handlers.TimedRotatingFileHandler('NamikawaLab2019.log', when='D')
-    handler.setLevel(logging.DEBUG)
-    handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s in %(module)s: %(message)s'))
-    app.logger.addHandler(handler)
-
     app.run(debug=True, host='0.0.0.0', port=5000)
