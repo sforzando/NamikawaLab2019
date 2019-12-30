@@ -2,6 +2,8 @@
 
 Design Project III A at Kyoto University of Art and Design
 
+![screenshot](https://user-images.githubusercontent.com/32637762/71595237-2a134100-2b7e-11ea-975f-b0c9263f446f.png>)
+
 - [How to Develop](#how-to-develop)
   - [Install libraries](#install-libraries)
   - [Run](#run)
