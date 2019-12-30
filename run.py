@@ -19,9 +19,9 @@ handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s in %(module)
 app.logger.addHandler(handler)
 
 
-def get_random_string(n=8):
+def get_random_string(digit=8):
     """ for Cache Control Hash """
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+    return ''.join([random.choice(string.ascii_letters + string.digits) for i in range(digit)])
 
 
 def get_images():

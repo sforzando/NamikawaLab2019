@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js antialiased" lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>わびさびの不可解 - moved</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/static/css/tailwind.css">
+  <link rel="stylesheet" href="/static/css/common.css">
+  <link rel="stylesheet" href="/static/css/moved.css?cch={{ cch }}">
+</head>
+
+<body class="">
+<div id='info' class="bg-teal-100 border border-teal-400 text-teal-700 px-4 py-3 rounded z-30 fixed top-0 left-0 m-4"
+     style="opacity: 0.9;" role="alert">
+  <p class="font-bold text-2xl">人工知能に「わびさびではない画像」を戻しました。</p>
+</div>
+<form class="flex flex-wrap content-center justify-center max-w-full max-h-full bg-gray-300">
+  {% for image in images | sorted %}
+    <img alt="{{ image }}"
+         class="cursor-pointer shadow-md hover:shadow-xl rounded object-scale-down object-center w-1/12 m-1"
+         src="/dataset/{{ image }}" loading="lazy">
+  {% endfor %}
+  <button id="submit"
+          class="bg-gray-500 hover:bg-gray-700 text-white text-2xl font-bold py-2 px-4 border border-gray-700 rounded inline-flex items-center z-40 fixed top-0 right-0 m-4"
+          style="opacity: 0.85;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="has-solid fill-current w-6 h-6" viewBox="0 0 36 36"
+         preserveAspectRatio="xMidYMid meet" role="img" fill="currentColor">
+      <path
+        d="M20.87,11.14h-13l5.56-5.49A1,1,0,0,0,12,4.22L4,12.13,12,20a1,1,0,0,0,1.41-1.42L7.86,13.14h13a9.08,9.08,0,0,1,9.13,9,9,9,0,0,1-5,8A1,1,0,0,0,25.93,32a11,11,0,0,0-5.06-20.82Z"
+        class="clr-i-outline clr-i-outline-path-1"/>
+    </svg>
+    <span>「わびさびな画像」を人工知能に教える</span>
+  </button>
+</form>
+<!-- scripts -->
+<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/moved.js?cch={{ cch }}"></script>
+</body>
+
+</html>
