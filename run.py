@@ -1,10 +1,10 @@
-from flask import Flask, request, render_template, send_from_directory, jsonify
-from pathlib import Path
-
 import logging.handlers
 import random
 import shutil
 import string
+from pathlib import Path
+
+from flask import Flask, request, render_template, send_from_directory, jsonify
 
 DATASET_PATH = '/mnt/dataset/wabisabi/'
 MOVED_PATH = '/mnt/dataset/moved/'
@@ -58,6 +58,11 @@ def get_moved_images():
 @app.route('/dataset/<path:filename>')
 def get_dataset(filename):
     return send_from_directory(DATASET_PATH, filename)
+
+
+@app.route('/moved/<path:filename>')
+def get_moved(filename):
+    return send_from_directory(MOVED_PATH, filename)
 
 
 @app.route('/mosaic/<path:filename>')
