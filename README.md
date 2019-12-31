@@ -5,6 +5,8 @@ Design Project III A at Kyoto University of Art and Design
 ![screenshot](https://user-images.githubusercontent.com/32637762/71595237-2a134100-2b7e-11ea-975f-b0c9263f446f.png)
 
 - [How to Prepare Dataset](#how-to-prepare-dataset)
+  - [Download from Instagram](#download-from-instagram)
+  - [Mount Firestore](#mount-firestore)
 - [How to Develop](#how-to-develop)
   - [Install libraries](#install-libraries)
   - [Run](#run)
@@ -17,7 +19,18 @@ Design Project III A at Kyoto University of Art and Design
 
 ## How to Prepare Dataset
 
+### Download from Instagram
+
 See `./downloadFromInstagramByHashtag.sh`.
+
+### Mount Firestore
+
+```sh
+sudo apt install nfs-common
+sudo mkdir /mnt/dataset
+sudo mount 10.0.0.2:/vold /mnt/dataset
+sudo chmod go+rw /mnt/dataset
+```
 
 ## How to Develop
 
