@@ -2,15 +2,19 @@
     "cSpell.words": [
         "antialiased",
         "asctime",
+        "chmod",
         "crossorigin",
         "datefmt",
         "filebrowser",
+        "firestore",
+        "icongr",
         "jsonify",
         "levelname",
         "namikawa",
         "qualname",
         "systemctl",
         "systemd",
+        "vold",
         "wabisabi"
     ]
 }
