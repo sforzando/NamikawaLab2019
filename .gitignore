@@ -311,5 +311,12 @@ dmypy.json
 ## Work in Progress
 wip.html
 
-##
+## Log
 *.log
+
+## GAN
+/DCGAN-TF2.0/checkpoints
+/DCGAN-TF2.0/epochs
+/DCGAN-TF2.0/gifs
+/DCGAN-TF2.0/.ipynb_checkpoints
+
