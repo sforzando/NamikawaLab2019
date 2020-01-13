@@ -9,6 +9,7 @@
         "firestore",
         "icongr",
         "jsonify",
+        "keras",
         "levelname",
         "namikawa",
         "qualname",

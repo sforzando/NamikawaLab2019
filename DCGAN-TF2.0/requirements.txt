@@ -1,0 +1,7 @@
+imageio
+ipython
+matplotlib
+numpy
+Pillow
+tensorflow
+tqdm
