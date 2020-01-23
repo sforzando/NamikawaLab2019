@@ -14,8 +14,12 @@ Design Project III A at Kyoto University of Art and Design
 - [Add Daemon](#add-daemon)
   - [Flask](#flask)
   - [filebrowser](#filebrowser)
-- [License](#license)
-- [Thanks](#thanks)
+- [Misc](#misc)
+  - [Media Exposures](#media-exposures)
+  - [Contributor](#contributor)
+  - [Supervisor](#supervisor)
+  - [License](#license)
+  - [Thanks](#thanks)
 
 ## How to Prepare Dataset
 
@@ -99,12 +103,31 @@ Stop: `sudo systemctl stop filebrowser`
 
 You will be able to see `http://35.192.103.89:8080/`.
 
-# Misc
+## Misc
 
-## License
+### Media Exposures
+
+- https://www.kyoto-art.ac.jp/production/?p=108182
+
+![www kyoto-art ac jp_production__p=108182](https://user-images.githubusercontent.com/32637762/72949220-fae19f80-3dca-11ea-9035-5fcdd842e960.png)
+
+### Contributor
+
+- 岡崎 竜久
+- 北村 穂乃花
+- 谷 琴音
+- 中里 彩
+- 根之木 颯亮
+
+### Supervisor
+
+- 並河 進
+- 鈴木 真一朗
+
+### License
 
 MIT License.
 
-## Thanks
+### Thanks
 
 - Icon: [Icongr.am/clarity](https://icongr.am/clarity)
