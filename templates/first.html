@@ -11,9 +11,60 @@
   <link rel="stylesheet" href="/static/css/first.css?cch={{ cch }}">
 </head>
 
-<body>
+<body class="bg-black">
 <!-- Contents START -->
-<div class="container mx-auto">first</div>
+   
+    <div class="title-border">
+    <p class="text-4xl font-serif text-center my-1 text-center">選択</p>
+    </div>
+    <div class="header">
+    <p class="text-lg font-serif my-0 text-white">この中からわびさびではない画像を選択し人工知能に教えてください。</p>
+    <p class="text-lg font-serif my-0 text-white">10枚まで選ぶことができます。</p>  
+    </div>
+    <div class="sidebar">
+        <img src="/static/logo.png" 
+         alt="logo"
+         class="logo">
+    </div>    
+    
+<div id='info' class="bg-teal-100 border border-teal-400 text-teal-700 px-4 py-3 rounded z-30 fixed left-0 top-0 m-4 font-serif"
+     style="opacity: 0.9;" role="alert">
+  <p class="font-bold text-2xl">人工知能に「わびさびではない画像」を教えました。</p>
+  <p class="text-xl">ご協力ありがとうございました。</p>
+</div>
+<form class="flex flex-wrap content-center justify-center my-10 mx-12 bg-gray-300">
+
+   {% for image in images[:11 ** 2] %}
+    <img alt="{{ image }}"
+         class="cursor-pointer shadow-md hover:shadow-xl rounded object-scale-down object-center w-1/12 m-1"
+         src="/dataset/{{ image }}" loading="lazy">
+  {% endfor %} 
+
+  
+</form>
+<div class="text-center flex-col bottom-0">
+  <button id="submit"
+          class="bg-gray-500 hover:bg-gray-700 text-white text-xl font-medium font-serif py-2 px-4 border border-gray-700 rounded inline-flex item-center z-40  my-2 right-0 m-4 "
+          style="opacity: 0.85;">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="has-solid fill-current w-6 h-6" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
+         role="img" fill="currentColor">
+      <path d="M28,30H6V8H19.22l2-2H6A2,2,0,0,0,4,8V30a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V15l-2,2Z"
+            class="clr-i-outline clr-i-outline-path-1"></path>
+      <path
+              d="M33.53,5.84,30.16,2.47a1.61,1.61,0,0,0-2.28,0L14.17,16.26l-1.11,4.81A1.61,1.61,0,0,0,14.63,23,1.69,1.69,0,0,0,15,23l4.85-1.07L33.53,8.12A1.61,1.61,0,0,0,33.53,5.84ZM18.81,20.08l-3.66.81L16,17.26,26.32,6.87l2.82,2.82ZM30.27,8.56,27.45,5.74,29,4.16,31.84,7Z"
+              class="clr-i-outline clr-i-outline-path-2"></path>
+      <path
+              d="M33,6.4,29.3,2.7a1.71,1.71,0,0,0-2.36,0L23.65,6H6A2,2,0,0,0,4,8V30a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V11.76l3-3A1.67,1.67,0,0,0,33,6.4ZM18.83,20.13l-4.19.93,1-4.15,9.55-9.57,3.23,3.23ZM29.5,9.43,26.27,6.2l1.85-1.85,3.23,3.23Z"
+              class="clr-i-solid clr-i-solid-path-1" style="display:none"></path>
+    </svg>
+    <span>「わびさびではない画像」を人工知能に教える</span>
+  </button>
+</div>
+
+
+
+</html>
 <!-- Contents END -->
 <!-- scripts -->
 <script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
